@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>手速测试</title>
+<meta charset="utf-8"> 
+<link href="https://cdn.bootcss.com/bootstrap/4.0.0-alpha.3/css/bootstrap.css" rel="stylesheet">
+<link href="https://cdn.bootcss.com/bootstrap/4.0.0-alpha.3/css/bootstrap.min.css" rel="stylesheet">
+<link href="css/cover.css" rel="stylesheet">
+<script data-rocketsrc="https://cdn.bootcss.com/bootstrap/4.0.0-alpha.3/js/bootstrap.js" type="text/rocketscript"></script>
+<script data-rocketsrc="https://cdn.bootcss.com/bootstrap/4.0.0-alpha.3/js/bootstrap.min.js" type="text/rocketscript"></script>
+<script src="https://cdn.bootcss.com/jquery/3.1.1/core.js"></script>
+<script src="https://cdn.bootcss.com/jquery/3.1.1/jquery.min.js"></script>
+<script src="ud.js"></script>
+<link rel="stylesheet" href="style.css" type="text/css">
+<script src="js/METERIOTController.core.js"></script>
+<link type="text/css" href="css/METERIOT.main.css" rel="stylesheet" />
+<link type="text/css" href="css/METERIOT.icons.css" rel="stylesheet" />
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta http-equiv="x-ua-compatible" content="ie=edge">
+<script>
+    $(document).ready(function()
+   {
+    //拔毛小游戏
+   var i = 0; //定义一个变量
+   var a = 60;//定义时间
+   var c = 0;//定义
+   var d = 0;//定义
+   var ld = -10;//定义力度
+   var oo = -10;
+  $(".btn").click(function(){
+	  $(".btn").hide();//同意按钮消失
+	  //开始换图片
+	  document.getElementById("ppc").src = "pic/2.png"//换图片
+	  //开始倒计时
+	setTimeout("$('#h4').show();",2000);//3
+    setTimeout("$('#h4').hide();",3000);
+    setTimeout("$('#h5').show();",3000);//2
+    setTimeout("$('#h5').hide();",4000);
+    setTimeout("$('#h6').show();",4000);//1
+    setTimeout("$('#h6').hide();",5000);
+    setTimeout("$('#h7').show();",5000);//开始
+    //生成页面
+    setTimeout("$('#h7').hide();",6000);
+    setTimeout("$('#ppcc').show();",6000);//图片显示
+    setTimeout('document.getElementById("ppc").src = "pic/3.png";',6000);//换图片
+    setTimeout("$('#zzz').show();",6000);//显示
+    setTimeout("$('#zz').show();",6000);//显示
+    });
+    $("#ppcc").mousedown(function(){ //鼠标按下时
+        setpp();
+        mm = setInterval(setpp,17); //20来一
+        if (d==0) {  //开始触发函数  
+           setTime();
+            times = setInterval(setTime, 1000);     //倒计时重写完毕
+           d=d+1;
+           }
+        });
+      $("#ppcc").mouseup(function(){   //鼠标松开
+         setpc();
+          	if (180<ld<360) {
+            	setpc();//回去
+            	i=i+1;
+         		var b ="您一共拔了"+ i +"根毛";
+         		$("#gdt").html(b);
+          		tmos = setInterval(setpc,5); //5来一次
+
+          }
+      });
+        function setpc(){ //回家触发
+        clearInterval(mm); //清除对函数的调用
+        ld=ld-5;
+        $("#zz").css("margin-left",ld);
+        if (ld==-10) {
+          clearInterval(tmos); //清除对函数的调用
+          ld=-10;
+        }
+        if (ld<-10) {
+          $("#zz").css("margin-left","-10");
+          ld=-10;
+          clearInterval(tmos); //清除对函数的调用
+        }
+      }
+      function setpp(){ //力度触发
+          ld=ld+5;
+           $("#zz").css("margin-left",ld);  //修改进度
+            if (ld>564) {
+            ld=-10;
+            $("#zz").css("margin-left",ld); 
+            clearInterval(mm); //清除对函数的调用
+			 }
+        }
+   function setTime(){  //函数触发
+    a=a-1;
+    $("#gd").html(a);
+      if (a==0) {
+         clearInterval(times);    //清除对函数的调用
+         $("#gd").hide();
+         $('#ppcc').hide();
+         $("#jjk").html("GAME OVER!");   //一堆尼玛都给我隐藏掉
+          $(".btn-cool").show();
+          $('#llk').hide();
+          $('#ppc').hide();
+          clearInterval(mm);
+          clearInterval(tmos);
+          $('#zzz').hide();
+          $('#zz').hide();
+            }
+     }
+     $(".btn-cool").click(function(){ //鼠标按下
+      $("#jjk").html("");
+      $("#gdt").html("");
+      $("#gd").html("");      //开始清空一堆东西
+      $("#gd").show();
+         i = 0; 
+         a = 60;
+         c = 0;     //全部重新定义
+         d = 0;
+         ld = -10;
+        $('#ppcc').show();
+        $('#llk').show();
+        $('#ppc').show();
+        document.getElementById("ppc").src = "pic/3.png";//都尼玛换回来
+        $(".btn-cool").hide();//隐藏按钮
+        $("#ppcc").animate({width:'367'},"slow");
+        $("#ppcc").animate({height:'211'},"slow");  //图片大小变回原来的
+        $('#zz').show();
+        $('#zzz').show();
+      });
+       $("#ppcc").mouseenter(function(){ //出现
+       $("#ppcc").animate({width:'376'},"slow");
+       $("#ppcc").animate({height:'220'},"slow");
+    });
+         $("#ppcc").mouseleave(function(){  //消失
+    $("#ppcc").animate({width:'367'},"slow");
+    $("#ppcc").animate({height:'211'},"slow");
+    });
+});
+ </script>
+
+</head>
+<body>
+<div align="center"><img id="ppc" src="pic/1.png" width="476" height="114">
+    <img id="llk" src="pic/watch.png" width="69" height="67">
+    <br>
+</div>
+  
+    <div id="div1" align="center">
+      <p><a class="btn">同意</a></p>
+      <p>
+      <h2 style="display:none;" id="h4">3</h2>
+      <h2 style="display:none;" id="h5">2</h2>
+      <h2 style="display:none;" id="h6">1</h2>
+      <h2 style="display:none;" id="h7">开始</h2>
+       <img style="display:none;" id ="ppcc" src="pic/hand.png" width="367" height="211">
+        </p>
+        <p id = "gdt"></p>  <p id = "gd"></p>
+        <p id ="jjk"></p>
+        <p><a class="btn-cool" style="display:none;">再来一次</a></p>
+
+      <div class="container-fluid">
+      <!--感谢秋秋的demo-->
+        <div id="zzz" style="display:none; width:581px;height:24px;margin:auto;background:url(pic/lidu.png);overflow:visible;text-align:left;">
+            <div id="zz" style="display:none; position:absolute;margin-left:-10px;text-align:left;display:block;width:30px;height:50px;background:URL(pic/zz.png);z-index:1;"></div>
+            
+        </div>
+      </div>
+</div>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<div id="updown"> 
+<div class="sidebar_wo" id="leimu">
+<img src="leimu_1.png" alt="雷姆" onmouseover="this.src='leimu_2.png'" onmouseout="this.src='leimu_1.png'" id="audioBtn">
+</div>
+<div id="updown"class="container-fluid" style="background:rgba(201,201,201,1.00);color:rgba(0,0,0,1.00);padding-top:20px;margin-top:20px;">
+<div class="container">
+<div class="row">
+<div class="col-sm-12">
+<p class="text-xs-right">形随意动软件工作室&copy;2016-2018 版权所有</p>
+<p class="text-xs-right">Copyright&copy;xsyds.cn 2016-2018, all rights reserved</p>
+</div>
+</div>
+</div>
+</div>
+<div class="sidebar_wo" id="lamu">
+<img src="lamu_1.png" alt="雷姆" onmouseover="this.src='lamu_2.png'" onmouseout="this.src='lamu_1.png'" id="audioBtn">
+</div>
+</body>
+</html>
